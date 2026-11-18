@@ -1,0 +1,138 @@
+{% load static %}
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#071326"><title>{% block title %}PK CRACKERS{% endblock %}</title><link rel="stylesheet" href="{% static 'store/style.css' %}"></head>
+<body><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><header class="top glass"><a class="brand" href="{% url 'home' %}"><img class="brand-logo" src="{% static 'store/images/pk-crackers-seal.jpg' %}" alt="PK CRACKERS logo"><span>PK <b>CRACKERS</b></span></a><div class="faith-symbols" aria-label="Faith symbols"><img src="{% static 'store/images/pk-crackers-faith-1.png' %}" alt="Cross medallion"><img src="{% static 'store/images/pk-crackers-faith-2.png' %}" alt="Om medallion"><img src="{% static 'store/images/pk-crackers-faith-3.png' %}" alt="Crescent and star medallion"></div><button class="mobile-nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open navigation"><span></span><span></span><span></span></button><nav id="primary-nav"><a href="{% url 'home' %}">Shop</a>{% if user.is_authenticated %}<a href="{% url 'cart' %}">Cart</a><a href="{% url 'my_orders' %}">My orders</a>{% if user.is_staff %}<a href="{% url 'dashboard' %}">Staff portal</a><a href="/django-admin/">Django admin</a>{% endif %}<form method="post" action="{% url 'logout' %}" class="inline">{% csrf_token %}<button class="linkbtn">Log out</button></form>{% else %}<a href="{% url 'login' %}">Log in</a><a class="nav-cta" href="{% url 'signup' %}">Create account</a>{% endif %}</nav></header>
+<div class="legal-marquee" role="note" aria-label="Firecracker legal disclaimer">
+  <div class="legal-marquee-track"><span>LEGAL NOTICE: Firecracker manufacture, storage, sale and use are subject to Supreme Court directions and applicable State and local rules. Only permitted and properly certified products may be handled. Always verify current local restrictions before purchase or use.</span><span aria-hidden="true">LEGAL NOTICE: Firecracker manufacture, storage, sale and use are subject to Supreme Court directions and applicable State and local rules. Only permitted and properly certified products may be handled. Always verify current local restrictions before purchase or use.</span></div>
+</div>
+<main>{% if messages %}<div class="messages">{% for message in messages %}<div class="message {{ message.tags }} glass">{{ message }}</div>{% endfor %}</div>{% endif %}{% block content %}{% endblock %}</main>{% if show_supreme_court_notice %}
+<div class="legal-modal" id="legal-notice-modal" role="dialog" aria-modal="true" aria-labelledby="legal-notice-title">
+  <div class="legal-modal-card glass">
+    <button class="legal-modal-close" type="button" aria-label="Close legal notice">&times;</button>
+    <p class="eyebrow">IMPORTANT LEGAL NOTICE</p>
+    <h2 id="legal-notice-title">Supreme Court directions on firecrackers</h2>
+    <p>The Supreme Court's order dated 29 October 2026 permitted only a limited, temporary relaxation for approved green firecrackers in Delhi-NCR on 7 and 8 November 2026, subject to strict conditions. The complete ban in Delhi-NCR resumed on 9 November 2026.</p>
+    <p>Firecracker rules differ by State, Union Territory and local jurisdiction. This notice is not a statement that one identical ban applies throughout India. Before buying, storing, transporting or using any firecracker, check the latest directions issued by the Supreme Court and the relevant local authorities. Use only products permitted by law and follow all safety requirements.</p>
+    <p class="legal-source">Reference: Supreme Court of India, order dated 29 October 2026 in <em>Arjun Gopal &amp; Ors. v. Union of India &amp; Ors.</em></p>
+    <button class="button legal-acknowledge" type="button">I UNDERSTAND</button>
+  </div>
+</div>
+{% endif %}
+<div class="media-lightbox" id="media-lightbox" role="dialog" aria-modal="true" aria-label="Media preview" aria-hidden="true">
+  <button class="lightbox-close" type="button" aria-label="Close preview">&times;</button>
+  <div class="lightbox-content" id="lightbox-content"></div>
+</div>
+<footer class="site-footer"><div class="footer-brand"><img src="{% static 'store/images/pk-crackers-seal.jpg' %}" alt="PK CRACKERS logo"><div><strong>PK CRACKERS</strong><small>Celebrate every moment.</small></div></div><div class="footer-contact"><strong>Contact us</strong><a href="https://wa.me/919499013251" target="_blank" rel="noopener">WhatsApp: 9499013251</a><a href="tel:+916369655972">Call: 6369655972</a></div><p class="footer-note">Celebrate responsibly and follow all applicable product, licensing and safety rules.</p></footer>{% block extra_scripts %}{% endblock %}<script>document.addEventListener("DOMContentLoaded",()=>{const nodes=document.querySelectorAll(".glass, .product, .cart-item");if(!("IntersectionObserver" in window)){nodes.forEach(n=>n.classList.add("motion-ready"));return;}const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("motion-ready");observer.unobserve(entry.target);}}),{threshold:.08});nodes.forEach(n=>observer.observe(n));});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const legalModal = document.getElementById("legal-notice-modal");
+  if (legalModal) {
+    const closeLegalNotice = () => legalModal.classList.remove("is-open");
+    legalModal.classList.add("is-open");
+    legalModal.querySelector(".legal-modal-close")?.addEventListener("click", closeLegalNotice);
+    legalModal.querySelector(".legal-acknowledge")?.addEventListener("click", closeLegalNotice);
+    legalModal.addEventListener("click", event => { if (event.target === legalModal) closeLegalNotice(); });
+  }
+
+  // Mobile navigation: explicitly toggle the menu and keep accessibility state in sync.
+  const menuButton = document.querySelector(".mobile-nav-toggle");
+  const nav = document.getElementById("primary-nav");
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", function () {
+      const isOpen = nav.classList.toggle("nav-open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+    });
+    nav.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        nav.classList.remove("nav-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      }
+    });
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 760) {
+        nav.classList.remove("nav-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open navigation");
+      }
+    });
+  }
+
+  // Password visibility controls. The input is found by its Django-generated id.
+  const eyeOpen = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>';
+  const eyeClosed = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 5.2A10.8 10.8 0 0 1 12 5c6.4 0 10 7 10 7a15 15 0 0 1-3.1 3.8M6.2 6.3C3.5 8.1 2 12 2 12s3.6 7 10 7c1.4 0 2.7-.3 3.8-.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  document.querySelectorAll("[data-password-toggle]").forEach(function (button) {
+    const input = document.getElementById(button.getAttribute("data-password-toggle"));
+    if (!input) return;
+    button.classList.add("has-eye-icon");
+    button.innerHTML = eyeOpen;
+    button.setAttribute("aria-label", "Show password");
+    button.setAttribute("title", "Show password");
+    button.setAttribute("aria-pressed", "false");
+    button.addEventListener("click", function () {
+      const reveal = input.type === "password";
+      input.type = reveal ? "text" : "password";
+      button.innerHTML = reveal ? eyeClosed : eyeOpen;
+      button.setAttribute("aria-label", reveal ? "Hide password" : "Show password");
+      button.setAttribute("title", reveal ? "Hide password" : "Show password");
+      button.setAttribute("aria-pressed", String(reveal));
+      input.focus();
+    });
+  });
+
+  // Shared image/video lightbox. Delegated click handling works for every product card.
+  const modal = document.getElementById("media-lightbox");
+  const content = document.getElementById("lightbox-content");
+  const closeButton = modal && modal.querySelector(".lightbox-close");
+  function closeMedia() {
+    if (!modal || !content) return;
+    const playingVideo = content.querySelector("video");
+    if (playingVideo) { playingVideo.pause(); playingVideo.removeAttribute("src"); playingVideo.load(); }
+    content.replaceChildren();
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+  }
+  function openMedia(trigger) {
+    if (!modal || !content) return;
+    const src = trigger.getAttribute("data-src");
+    const type = trigger.getAttribute("data-media-type");
+    const alt = trigger.getAttribute("data-alt") || "Product preview";
+    if (!src || (type !== "image" && type !== "video")) return;
+    content.replaceChildren();
+    let media;
+    if (type === "video") {
+      media = document.createElement("video");
+      media.controls = true;
+      media.autoplay = true;
+      media.playsInline = true;
+      media.preload = "auto";
+      media.src = src;
+    } else {
+      media = document.createElement("img");
+      media.src = src;
+      media.alt = alt;
+    }
+    content.appendChild(media);
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+    if (type === "video") {
+      const playAttempt = media.play();
+      if (playAttempt && typeof playAttempt.catch === "function") playAttempt.catch(function () {});
+    }
+    if (closeButton) closeButton.focus();
+  }
+  document.addEventListener("click", function (event) {
+    const trigger = event.target.closest("[data-open-media]");
+    if (trigger) { event.preventDefault(); openMedia(trigger); return; }
+    if (event.target === modal || event.target.closest(".lightbox-close")) closeMedia();
+  });
+  if (closeButton) closeButton.addEventListener("click", closeMedia);
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal && modal.classList.contains("is-open")) closeMedia();
+  });
+});
+</script></body></html>

@@ -1,0 +1,19 @@
+PK CRACKERS | NEW ORDER ALERT
+
+ORDER #{{ order.pk }}
+Placed on: {{ order.created_at|date:"d M Y, h:i A" }}
+Order status: {{ order.get_status_display }}
+Payment status: {{ order.get_payment_status_display }}
+Order total: ₹{{ order.total_amount|floatformat:2 }}
+
+CUSTOMER DETAILS
+Name: {{ order.username }}
+Account: {{ order.user.username }}
+Email: {{ order.user.email|default:"No email on account" }}
+Contact: {{ order.contact }}
+Delivery address: {{ order.address }}
+
+ITEMS
+{% for item in items %}{{ item.product_name }} | Qty: {{ item.quantity }} | Unit price: ₹{{ item.unit_price|floatformat:2 }} | Line total: ₹{{ item.line_total|floatformat:2 }}
+{% endfor %}
+Open staff portal: {{ staff_url }}
