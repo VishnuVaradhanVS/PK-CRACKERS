@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}Shopping cart · PK CRACKERS{% endblock %}
+{% block content %}
+<p class="eyebrow">YOUR SELECTION</p><h1>Shopping cart</h1>
+{% if rows %}
+  <div class="cart-layout">
+    <div class="cart-items">
+      {% for row in rows %}
+        <article class="cart-item glass">
+          <div class="cart-item-image">
+            {% if row.product.image %}<img src="{{ row.product.image.url }}" alt="{{ row.product.name }}">
+            {% elif row.product.image_url %}<img src="{{ row.product.image_url }}" alt="{{ row.product.name }}">
+            {% else %}<span class="media-placeholder">✦</span>{% endif %}
+          </div>
+          <div class="cart-item-info">
+            <h3>{{ row.product.name }}</h3>
+            <p>{{ row.product.description|default:"A bright addition to your celebration."|truncatechars:110 }}</p>
+            <span class="cart-unit-price">₹{{ row.product.cost }} <small>per item</small></span>
+          </div>
+          <div class="cart-item-actions">
+            <div class="quantity-stepper" aria-label="Quantity controls">
+              <form method="post" action="{% url 'update_cart' row.product.id %}">{% csrf_token %}<input type="hidden" name="quantity" value="{{ row.quantity|add:'-1' }}"><button type="submit" aria-label="Decrease quantity" {% if row.quantity <= 1 %}disabled{% endif %}>−</button></form>
+              <strong>{{ row.quantity }}</strong>
+              <form method="post" action="{% url 'update_cart' row.product.id %}">{% csrf_token %}<input type="hidden" name="quantity" value="{{ row.quantity|add:'1' }}"><button type="submit" aria-label="Increase quantity" {% if row.quantity >= row.product.stock or row.quantity >= 99 %}disabled{% endif %}>+</button></form>
+            </div>
+            <strong class="cart-line-total">₹{{ row.line_total }}</strong>
+            <form method="post" action="{% url 'update_cart' row.product.id %}" class="remove-cart-form">{% csrf_token %}<input type="hidden" name="quantity" value="0"><button type="submit" class="remove-cart" aria-label="Remove {{ row.product.name }} from cart" title="Remove item">×</button></form>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <aside class="cart-summary glass">
+      <p class="eyebrow">ORDER SUMMARY</p><h2>Your total</h2>
+      <div class="summary-line"><span>Products</span><strong>{{ rows|length }}</strong></div>
+      <div class="summary-total"><span>Total</span><strong>₹{{ total }}</strong></div>
+      <a class="button checkout-button" href="{% url 'checkout' %}">Continue to checkout <span>↗</span></a>
+      <a class="continue-shopping" href="{% url 'home' %}">Continue shopping</a>
+    </aside>
+  </div>
+{% else %}
+  <div class="empty-state glass"><h2>Your cart is waiting for a little sparkle.</h2><p>Explore the collection and add your favourites.</p><a class="button" href="{% url 'home' %}">Browse products</a></div>
+{% endif %}
+{% endblock %}

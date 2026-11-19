@@ -1,0 +1,23 @@
+PK CRACKERS | ORDER CONFIRMATION
+
+Hello {{ order.username }}, thank you for placing your order. We have received your request and our team will review it shortly.
+
+ORDER #{{ order.pk }}
+Placed on: {{ order.created_at|date:"d M Y, h:i A" }}
+Order status: {{ order.get_status_display }}
+Payment status: {{ order.get_payment_status_display }}
+
+ITEMS
+{% for item in items %}{{ item.product_name }} | Qty: {{ item.quantity }} | Unit price: ₹{{ item.unit_price|floatformat:2 }} | Amount: ₹{{ item.line_total|floatformat:2 }}
+{% endfor %}
+ORDER TOTAL: ₹{{ order.total_amount|floatformat:2 }}
+
+DELIVERY DETAILS
+Name: {{ order.username }}
+Contact: {{ order.contact }}
+Address: {{ order.address }}
+
+View order details: {{ order_url }}
+
+PK CRACKERS{% if support_email %}
+{{ support_email }}{% endif %}

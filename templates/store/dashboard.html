@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block title %}Staff dashboard · PK CRACKERS{% endblock %}
+{% block content %}
+<p class="eyebrow">STAFF PORTAL</p>
+<h1>Store dashboard</h1>
+<p class="intro-copy">Manage your catalogue, customer orders and checkout payment details from one place. {{ order_count }} total orders · <a href="/django-admin/">Open full Django admin</a></p>
+
+<nav class="staff-tabs glass" role="tablist" aria-label="Staff management sections">
+  <button class="staff-tab inventory-tab {% if active_tab == 'inventory' %}is-active{% endif %}" type="button" role="tab" aria-selected="{% if active_tab == 'inventory' %}true{% else %}false{% endif %}" aria-controls="inventory-panel" data-tab="inventory-panel"><span class="tab-icon">▦</span><span>Inventory</span><small>{{ products|length }} shown</small></button>
+  <button class="staff-tab orders-tab {% if active_tab == 'orders' %}is-active{% endif %}" type="button" role="tab" aria-selected="{% if active_tab == 'orders' %}true{% else %}false{% endif %}" aria-controls="orders-panel" data-tab="orders-panel"><span class="tab-icon">▤</span><span>Orders</span><small>{{ order_count }} total</small></button>
+  <button class="staff-tab payments-tab {% if active_tab == 'payments' %}is-active{% endif %}" type="button" role="tab" aria-selected="{% if active_tab == 'payments' %}true{% else %}false{% endif %}" aria-controls="payments-panel" data-tab="payments-panel"><span class="tab-icon">▣</span><span>Payment info</span><small>QR & instructions</small></button>
+</nav>
+
+<section id="inventory-panel" class="staff-panel {% if active_tab == 'inventory' %}is-visible{% endif %}" role="tabpanel" {% if active_tab != 'inventory' %}hidden{% endif %}>
+  <div class="heading"><div><p class="eyebrow">PRODUCTS</p><h2>Inventory</h2></div><span class="section-count">{{ products|length }} products</span></div>
+  <form class="inventory-search" method="get" action="{% url 'dashboard' %}"><input type="hidden" name="tab" value="inventory"><label class="sr-only" for="inventory-search-input">Search inventory by name</label><input id="inventory-search-input" type="search" name="product_q" value="{{ product_query }}" placeholder="Search inventory by product name..."><button class="button" type="submit">Search</button>{% if product_query %}<a class="button secondary" href="{% url 'dashboard' %}?tab=inventory#inventory-panel">Clear</a>{% endif %}</form>
+  <div class="tablebox"><table class="inventory-table"><thead><tr><th>ID</th><th>Product</th><th>Price</th><th>Stock</th><th>Availability</th><th>Media preview</th><th>Manage</th></tr></thead><tbody>
+  {% for p in products %}<tr><td>{{ p.id }}</td><td><strong>{{ p.name }}</strong><br><small>{{ p.description|truncatechars:90 }}</small></td><td>₹{{ p.cost }}</td><td>{{ p.stock }}</td><td>{% if p.is_active %}<span class="status-pill active">Active</span>{% else %}<span class="status-pill inactive">Hidden</span>{% endif %}</td><td><div class="inventory-media">{% if p.image %}<img src="{{ p.image.url }}" alt="{{ p.name }} image" loading="lazy">{% elif p.image_url %}<img src="{{ p.image_url }}" alt="{{ p.name }} image" loading="lazy">{% else %}<span class="media-missing">No image</span>{% endif %}{% if p.video_file %}<video controls preload="metadata"><source src="{{ p.video_file.url }}"></video>{% else %}<span class="media-missing">No video</span>{% endif %}</div></td><td><a class="button small" href="{% url 'dashboard' %}?tab=inventory&amp;edit={{ p.id }}#product-editor">Edit</a></td></tr>
+  {% empty %}<tr><td colspan="7">{% if product_query %}No products match that name.{% else %}No products in inventory yet.{% endif %}</td></tr>{% endfor %}
+  </tbody></table></div>
+
+  <div id="product-editor" class="heading add-product-heading"><div><p class="eyebrow">CATALOGUE MANAGEMENT</p><h2>{% if edit_product %}Edit {{ edit_product.name }}{% else %}Add a new item{% endif %}</h2></div>{% if edit_product %}<a class="button secondary" href="{% url 'dashboard' %}?tab=inventory#product-editor">+ New item</a>{% endif %}</div>
+  <div class="product-create-layout"><div class="formbox product-formbox">
+    <form id="product-create-form" method="post" action="{% url 'create_product' %}" enctype="multipart/form-data">{% csrf_token %}
+      {% if edit_product %}<input type="hidden" name="product_id" value="{{ edit_product.id }}">{% endif %}
+      {{ product_form.as_p }}
+      <button class="button" type="submit">{% if edit_product %}Save changes{% else %}Save product{% endif %} <span>↗</span></button>
+    </form>
+    <p><small>Images and videos are uploaded from your device. Leave existing media fields unchanged to keep the current files. Video formats: MP4, WebM or Ogg; maximum size: 100 MB.</small></p>
+  </div>
+  <aside class="product-live-preview glass" aria-live="polite"><div class="preview-head"><div><p class="eyebrow">LIVE CUSTOMER VIEW</p><h3>Shop preview</h3></div><span class="preview-live-dot">LIVE</span></div>
+    <article class="product preview-product"><div class="photo" id="preview-image-frame">{% if edit_product.image %}<img id="preview-image" src="{{ edit_product.image.url }}" alt="Product image preview">{% elif edit_product.image_url %}<img id="preview-image" src="{{ edit_product.image_url }}" alt="Product image preview">{% else %}<span class="media-placeholder" id="preview-image-placeholder">✦</span><img id="preview-image" alt="Product image preview" hidden>{% endif %}</div>
+      <div class="pad"><h3 id="preview-name">{% if edit_product %}{{ edit_product.name }}{% else %}Your product name{% endif %}</h3><p class="product-description" id="preview-description">{% if edit_product.description %}{{ edit_product.description }}{% else %}Your product description will appear here.{% endif %}</p>
+      <div class="product-video" id="preview-video-frame">{% if edit_product.video_file %}<video id="preview-video" controls playsinline preload="metadata"><source src="{{ edit_product.video_file.url }}"></video>{% else %}<span class="video-empty">Product preview</span><video id="preview-video" controls playsinline preload="metadata" hidden></video>{% endif %}</div>
+      <div class="price-row"><strong id="preview-price">₹{% if edit_product %}{{ edit_product.cost }}{% else %}0.00{% endif %}</strong><span id="preview-stock">{% if edit_product %}{{ edit_product.stock }}{% else %}0{% endif %} in stock</span></div><button class="button" type="button" disabled>Add to cart</button></div>
+    </article><p class="help-text">Preview updates as you edit product details or choose new media.</p>
+  </aside></div>
+</section>
+
+<section id="orders-panel" class="staff-panel {% if active_tab == 'orders' %}is-visible{% endif %}" role="tabpanel" {% if active_tab != 'orders' %}hidden{% endif %}>
+  <div class="heading"><div><p class="eyebrow">CUSTOMER ACTIVITY</p><h2>Existing orders</h2></div></div>
+  <form class="inventory-search" method="get" action="{% url 'dashboard' %}"><input type="hidden" name="tab" value="orders"><label for="order-status-filter">Filter by order status</label><select id="order-status-filter" name="order_status"><option value="">All statuses</option>{% for value,label in status_choices %}<option value="{{ value }}" {% if value == order_status_filter %}selected{% endif %}>{{ label }}</option>{% endfor %}</select><button class="button" type="submit">Apply filter</button>{% if order_status_filter %}<a class="button secondary" href="{% url 'dashboard' %}?tab=orders#orders-panel">Clear</a>{% endif %}</form>
+  <div class="tablebox"><table><thead><tr><th>Order</th><th>Customer</th><th>Delivery address</th><th>Items</th><th>Total</th><th>Update order & payment</th></tr></thead><tbody>
+  {% for order in orders %}<tr><td><strong>{{ order.pk }}</strong><br><small>{{ order.created_at|date:"d M Y, H:i" }}</small></td><td>{{ order.username }}<br>{{ order.contact }}</td><td>{{ order.address|linebreaksbr }}</td><td>{% for item in order.items.all %}{{ item.product_name }} × {{ item.quantity }}<br>{% endfor %}</td><td>₹{{ order.total_amount }}</td><td><form method="post" action="{% url 'update_order_status' order.pk %}" class="order-update-form">{% csrf_token %}<label>Order status<select name="status">{% for value,label in status_choices %}<option value="{{ value }}" {% if value == order.status %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label><label>Payment status<select name="payment_status">{% for value,label in payment_choices %}<option value="{{ value }}" {% if value == order.payment_status %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label><label>Internal payment note<input type="text" name="payment_note" value="{{ order.payment_note }}" placeholder="Optional note" maxlength="250"></label><button class="button small" type="submit">Save order & payment</button></form></td></tr>
+  {% empty %}<tr><td colspan="6">{% if order_status_filter %}No orders have this status.{% else %}No orders have been placed yet.{% endif %}</td></tr>{% endfor %}
+  </tbody></table></div>
+</section>
+
+<section id="payments-panel" class="staff-panel {% if active_tab == 'payments' %}is-visible{% endif %}" role="tabpanel" {% if active_tab != 'payments' %}hidden{% endif %}>
+  <div class="heading"><div><p class="eyebrow">CUSTOMER CHECKOUT</p><h2>Payment instructions & QR</h2></div></div>
+  <div class="settings-layout"><div class="formbox glass settings-form"><form method="post" action="{% url 'update_payment_settings' %}" enctype="multipart/form-data">{% csrf_token %}{{ payment_settings_form.as_p }}<button class="button" type="submit">Save payment details</button></form><p class="help-text">These details appear to customers during checkout. Verify payments manually before marking an order as paid. Admin WhatsApp numbers receive new-order alerts when the Meta WhatsApp integration is enabled; only add numbers whose owners have agreed to receive these alerts.</p></div><div class="qr-preview glass"><p class="eyebrow">CURRENT CUSTOMER QR</p>{% if payment_settings.qr_code %}<img src="{{ payment_settings.qr_code.url }}" alt="Current payment QR code">{% else %}<div class="qr-empty">QR not uploaded yet</div>{% endif %}<p>{{ payment_settings.instructions|default:"No payment instructions configured."|linebreaksbr }}</p></div></div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(() => {
+  const tabs = [...document.querySelectorAll('.staff-tab')];
+  const panels = [...document.querySelectorAll('.staff-panel')];
+  const activate = (tab) => {
+    tabs.forEach(item => { const active = item === tab; item.classList.toggle('is-active', active); item.setAttribute('aria-selected', String(active)); });
+    panels.forEach(panel => { const active = panel.id === tab.dataset.tab; panel.hidden = !active; panel.classList.toggle('is-visible', active); });
+  };
+  tabs.forEach(tab => tab.addEventListener('click', () => activate(tab)));
+
+  const form = document.getElementById('product-create-form');
+  if (!form) return;
+  const field = name => form.querySelector(`[name="${name}"]`);
+  const nameInput=field('name'), descriptionInput=field('description'), costInput=field('cost'), stockInput=field('stock');
+  const imageInput=field('image'), imageUrlInput=field('image_url'), videoInput=field('video_file');
+  const previewName=document.getElementById('preview-name'), previewDescription=document.getElementById('preview-description');
+  const previewPrice=document.getElementById('preview-price'), previewStock=document.getElementById('preview-stock');
+  const previewImage=document.getElementById('preview-image'), imagePlaceholder=document.getElementById('preview-image-placeholder');
+  const previewVideo=document.getElementById('preview-video'), videoFrame=document.getElementById('preview-video-frame');
+  const refresh=()=>{ previewName.textContent=nameInput?.value.trim()||'Your product name'; previewDescription.textContent=descriptionInput?.value.trim()||'Your product description will appear here.'; const amount=Number(costInput?.value||0); previewPrice.textContent=`₹${Number.isFinite(amount)?amount.toFixed(2):'0.00'}`; previewStock.textContent=`${stockInput?.value||0} in stock`; };
+  [nameInput,descriptionInput,costInput,stockInput].filter(Boolean).forEach(input=>input.addEventListener('input',refresh));
+  const showImage = url => { if(!url) return; previewImage.src=url; previewImage.hidden=false; if(imagePlaceholder) imagePlaceholder.hidden=true; };
+  imageInput?.addEventListener('change',()=>{const file=imageInput.files?.[0];if(file)showImage(URL.createObjectURL(file));});
+  imageUrlInput?.addEventListener('input',()=>{if(imageUrlInput.value.trim())showImage(imageUrlInput.value.trim());});
+  videoInput?.addEventListener('change',()=>{const file=videoInput.files?.[0];if(!file)return;if(previewVideo.dataset.objectUrl)URL.revokeObjectURL(previewVideo.dataset.objectUrl);const url=URL.createObjectURL(file);previewVideo.dataset.objectUrl=url;previewVideo.src=url;previewVideo.hidden=false;videoFrame.querySelector('.video-empty')?.remove();});
+  refresh();
+})();
+</script>
+{% endblock %}
