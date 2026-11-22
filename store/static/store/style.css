@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=League+Spartan:wght@600;700;800;900&display=swap');
+:root{color-scheme:dark;--bg:#061225;--bg2:#091a33;--panel:rgba(13,31,57,.72);--panel2:rgba(18,42,72,.78);--line:rgba(151,190,230,.16);--ink:#f5f8ff;--muted:#a8b9d1;--green:#39f59a;--orange:#ff9d43;--pink:#ff5ebc;--blue:#66aaff;--shadow:0 20px 60px rgba(0,0,0,.25)}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{position:relative;isolation:isolate;margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#112b50 0,transparent 42%),radial-gradient(ellipse at 90% 35%,#20143d 0,transparent 35%),linear-gradient(145deg,#050e1d,#08182e 55%,#071326);color:var(--ink);font:15px/1.6 'Inter',system-ui,sans-serif}.ambient{position:fixed;z-index:-1;width:340px;height:340px;border-radius:50%;filter:blur(100px);opacity:.12;pointer-events:none}.ambient-one{background:var(--green);top:35%;left:-200px}.ambient-two{background:var(--pink);right:-200px;top:8%}.glass{background:linear-gradient(135deg,rgba(21,45,75,.78),rgba(9,24,45,.78));border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px max(5vw,20px);gap:20px;border-width:0 0 1px;border-radius:0;background:rgba(5,16,32,.82);backdrop-filter:blur(22px)}.brand{font:700 20px 'League Spartan',sans-serif;text-decoration:none;color:var(--ink);letter-spacing:-.7px}.brand span:last-child{color:var(--green)}.brand-mark{color:var(--orange);margin-right:7px}.top nav{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.top nav a,.inline a{color:#dce8f8;text-decoration:none;font-weight:600;font-size:13px}.top nav a:hover{color:var(--green)}.nav-cta{border:1px solid rgba(57,245,154,.45);border-radius:30px;padding:8px 14px;color:var(--green)!important}.inline{display:inline}.linkbtn{border:0;background:none;color:#dce8f8;cursor:pointer;font:600 13px 'Inter';padding:0}.linkbtn:hover{color:var(--pink)}main{max-width:1240px;margin:38px auto 70px;padding:0 24px;min-height:70vh}footer{text-align:center;color:#8297b4;padding:28px 18px;border-top:1px solid var(--line);font-size:12px}.hero{position:relative;display:flex;align-items:center;justify-content:space-between;overflow:hidden;min-height:340px;padding:clamp(28px,6vw,66px);border-radius:26px;margin-bottom:50px}.hero:after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,20,39,.2),transparent 70%);pointer-events:none}.hero-copy{position:relative;z-index:2;max-width:600px}.hero h1{font:700 clamp(42px,7vw,76px)/.99 'League Spartan',sans-serif;letter-spacing:-4px;margin:16px 0}.hero h1 span{background:linear-gradient(90deg,var(--green),#7ee8ff 48%,var(--pink));background-clip:text;color:transparent}.hero-copy>p:not(.eyebrow){max-width:490px;color:#b5c7df;font-size:16px;margin:20px 0 26px}.hero-orbit{position:absolute;width:340px;height:340px;right:7%;top:50%;transform:translateY(-50%);display:grid;place-items:center}.orbit{position:absolute;border:1px solid rgba(102,170,255,.35);border-radius:50%;transform:rotate(-24deg)}.orbit-a{width:300px;height:160px}.orbit-b{width:230px;height:300px;transform:rotate(48deg);border-color:rgba(255,94,188,.32)}.hero-star{width:145px;height:145px;border-radius:42px;display:grid;place-items:center;font-size:88px;color:var(--green);text-shadow:0 0 40px rgba(57,245,154,.8);background:linear-gradient(145deg,rgba(57,245,154,.15),rgba(255,94,188,.08));border:1px solid rgba(255,255,255,.2);box-shadow:0 0 80px rgba(57,245,154,.16);transform:rotate(12deg)}.spark{position:absolute;color:var(--orange);font-size:34px}.spark-a{top:30px;right:65px}.spark-b{bottom:30px;left:25px;color:var(--pink)}.spark-c{top:50%;left:0;color:var(--green)}.eyebrow{font-size:10px;letter-spacing:.2em;color:var(--green);font-weight:800;text-transform:uppercase}.heading{display:flex;justify-content:space-between;align-items:end;margin:28px 0 18px}.heading h2,h1{font:600 32px 'League Spartan',sans-serif;letter-spacing:-1px;margin:5px 0}.section-count{font-size:12px;color:var(--muted);border:1px solid var(--line);padding:6px 12px;border-radius:30px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(245px,1fr));grid-auto-rows:1fr;align-items:stretch;gap:20px}.product{height:610px;min-width:0;display:flex;flex-direction:column;overflow:hidden;border-radius:18px;transition:transform .25s,border-color .25s}.product:hover{transform:translateY(-5px);border-color:rgba(57,245,154,.45)}.photo{height:220px;flex:0 0 220px;width:100%;overflow:hidden;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(102,170,255,.15),rgba(4,14,28,.8));border-bottom:1px solid var(--line)}.photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}.media-placeholder{font-size:54px;color:var(--green);text-shadow:0 0 35px rgba(57,245,154,.5)}.pad{padding:17px;display:flex;flex-direction:column;flex:1;min-height:0}.pad h3{font:600 19px 'League Spartan',sans-serif;margin:0;color:#fff;min-height:30px}.product-description{font-size:13px;color:var(--muted);height:58px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;margin:8px 0}.product-video{height:150px;flex:0 0 150px;width:100%;overflow:hidden;background:#020914;border-radius:10px;margin:7px 0 4px;display:grid;place-items:center}.product-video video{width:100%;height:100%;object-fit:contain}.video-empty{border:1px dashed rgba(151,190,230,.13);color:#637b9b;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.price-row{display:flex;justify-content:space-between;align-items:center;margin:auto 0 14px;padding-top:12px}.price-row strong{font:700 21px 'League Spartan';color:var(--green)}.price-row span{font-size:11px;color:var(--muted)}.pad form{display:flex;gap:8px}.pad input{width:70px}.button{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(100deg,#1bcf83,#39f59a);color:#062117;border:0;border-radius:10px;padding:11px 16px;text-decoration:none;cursor:pointer;font:700 13px 'Inter';box-shadow:0 7px 24px rgba(57,245,154,.15);transition:filter .2s,transform .2s}.button:hover{filter:brightness(1.08);transform:translateY(-1px)}.button.secondary{background:rgba(102,170,255,.12);color:#b9d7ff;border:1px solid rgba(102,170,255,.35);box-shadow:none}.button.tertiary{background:rgba(255,94,188,.12);color:#ff9bd4;border:1px solid rgba(255,94,188,.35);box-shadow:none}.tablebox,.formbox{background:rgba(10,27,50,.78);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);backdrop-filter:blur(16px)}.tablebox{overflow:auto;margin:18px 0}table{width:100%;border-collapse:collapse;min-width:650px}td,th{text-align:left;padding:12px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:10px;color:#91a8c5;text-transform:uppercase;letter-spacing:.1em;background:rgba(20,43,72,.8)}td{color:#dce8f8}td small{color:#91a8c5}td a{color:var(--green)}.formbox{max-width:620px;padding:23px}.formbox p{display:grid;gap:7px;color:#dce8f8}.formbox input,.formbox textarea,.formbox select,input,textarea,select{font:inherit;color:var(--ink);background:rgba(4,15,30,.8);padding:10px 12px;border:1px solid rgba(151,190,230,.25);border-radius:9px;max-width:100%;accent-color:var(--green)}input:focus,textarea:focus,select:focus{outline:2px solid rgba(57,245,154,.3);border-color:var(--green)}select option{background:#0b1c33;color:white}.formbox input,.formbox textarea{width:100%}.formbox input[type=checkbox]{width:auto}.messages{margin:15px 0}.message{padding:12px 16px;border-radius:10px;margin:7px 0;color:#fff}.message.error{border-color:rgba(255,94,188,.4);color:#ffaddb}.message.success{border-color:rgba(57,245,154,.4);color:#9fffc9}.staff-jump{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 32px}.staff-section{margin:34px 0 48px;scroll-margin-top:100px}.status-pill{display:inline-block;padding:4px 9px;border-radius:30px;font-size:11px}.status-pill.active{color:var(--green);background:rgba(57,245,154,.1)}.status-pill.inactive{color:var(--pink);background:rgba(255,94,188,.1)}.settings-layout,.checkout-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:20px;align-items:start}.settings-form{max-width:none}.qr-preview,.payment-panel{padding:22px;border-radius:17px}.qr-preview img,.checkout-qr img{display:block;width:min(100%,260px);aspect-ratio:1;object-fit:contain;background:white;border-radius:12px;padding:10px;margin:12px auto}.qr-preview p:not(.eyebrow),.payment-instructions{color:#c4d4e8;white-space:normal}.qr-empty{display:grid;place-items:center;min-height:180px;padding:20px;text-align:center;border:1px dashed rgba(151,190,230,.3);border-radius:12px;color:var(--muted);margin:14px 0}.payment-panel h2{font:600 24px 'League Spartan';margin:4px 0 12px}.checkout-form{max-width:none}.fine-print,.help-text{font-size:12px;color:#91a8c5}.intro-copy{color:var(--muted);max-width:680px}.total{margin:20px 0;color:var(--green)}.empty-state{padding:35px;border-radius:16px;grid-column:1/-1}.small{padding:7px 10px;font-size:12px}.product-formbox{max-width:760px}.product-formbox p{margin:0 0 14px}.product-formbox .helptext,.help-text{color:var(--muted)}@media(max-width:800px){.hero-orbit{right:-95px;opacity:.45}.hero-copy{max-width:90%}.settings-layout,.checkout-layout{grid-template-columns:1fr}}@media(max-width:600px){main{padding:0 14px;margin-top:24px}.hero{padding:28px 22px;min-height:340px}.hero h1{font-size:48px;letter-spacing:-2px}.hero-orbit{right:-150px;opacity:.27}.top{padding:13px 15px}.top nav{gap:10px;font-size:12px}.top nav a{font-size:12px}.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}.photo{height:205px;flex-basis:205px}.heading h2,h1{font-size:27px}.formbox{padding:17px}.checkout-layout{gap:14px}}
+
+/* Motion, focused staff tabs, live product preview and card-based cart */
+@keyframes rise-in{from{opacity:0;transform:translateY(18px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes soft-glow{0%,100%{box-shadow:0 0 0 rgba(57,245,154,0)}50%{box-shadow:0 0 28px rgba(57,245,154,.12)}}
+@keyframes tab-pop{from{opacity:.55;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.glass,.product,.cart-item{opacity:1}.glass.motion-ready,.product.motion-ready,.cart-item.motion-ready{animation:rise-in .55s cubic-bezier(.2,.7,.2,1) both}
+.grid .product:nth-child(2n){animation-delay:.06s}.grid .product:nth-child(3n){animation-delay:.12s}
+.button,.staff-tab,.quantity-stepper button,.remove-cart{transition:transform .2s ease,filter .2s ease,background .2s ease,border-color .2s ease,box-shadow .2s ease}
+.button:active,.staff-tab:active,.quantity-stepper button:active,.remove-cart:active{transform:scale(.97)}
+.staff-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:10px;border-radius:18px;margin:24px 0 30px}
+.staff-tab{min-height:76px;display:grid;grid-template-columns:36px 1fr;grid-template-rows:1fr auto;align-items:center;text-align:left;column-gap:10px;padding:12px 16px;border-radius:13px;border:1px solid transparent;background:rgba(5,17,34,.45);color:#dce8f8;cursor:pointer;font:700 14px 'Inter',sans-serif}
+.staff-tab .tab-icon{grid-row:1/3;display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.06);font-size:20px}
+.staff-tab small{font-size:10px;font-weight:500;color:var(--muted)}
+.staff-tab:hover{transform:translateY(-2px);background:rgba(255,255,255,.06)}
+.staff-tab.inventory-tab.is-active{color:var(--green);border-color:rgba(57,245,154,.5);background:linear-gradient(120deg,rgba(57,245,154,.16),rgba(57,245,154,.045));box-shadow:0 0 28px rgba(57,245,154,.1)}
+.staff-tab.orders-tab.is-active{color:var(--orange);border-color:rgba(255,157,67,.52);background:linear-gradient(120deg,rgba(255,157,67,.16),rgba(255,157,67,.045));box-shadow:0 0 28px rgba(255,157,67,.1)}
+.staff-tab.payments-tab.is-active{color:var(--pink);border-color:rgba(255,94,188,.52);background:linear-gradient(120deg,rgba(255,94,188,.16),rgba(255,94,188,.045));box-shadow:0 0 28px rgba(255,94,188,.1)}
+.staff-panel[hidden]{display:none!important}.staff-panel.is-visible{animation:tab-pop .28s ease both}.staff-panel{min-width:0}
+.inventory-media{display:flex;align-items:center;gap:8px;min-width:220px}.inventory-media img,.inventory-media video{width:104px;height:78px;flex:0 0 104px;object-fit:cover;border-radius:8px;background:#020914;border:1px solid var(--line)}.inventory-media video{object-fit:contain}.media-missing{width:104px;height:78px;display:grid;place-items:center;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:10px}
+.add-product-heading{margin-top:42px}.product-create-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(300px,.85fr);gap:20px;align-items:start}.product-formbox{max-width:none}.product-live-preview{position:sticky;top:104px;border-radius:17px;padding:17px;min-width:0}.preview-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.preview-head h3{font:600 20px 'League Spartan';margin:2px 0}.preview-live-dot{font-size:9px;letter-spacing:.12em;color:var(--green);border:1px solid rgba(57,245,154,.35);padding:4px 8px;border-radius:30px}.preview-live-dot:before{content:'';display:inline-block;width:6px;height:6px;background:var(--green);border-radius:50%;margin-right:6px;box-shadow:0 0 10px var(--green)}.preview-product{height:610px;max-width:340px;margin:0 auto;border:1px solid var(--line)}.preview-product .pad>button{width:100%;opacity:.65}.product-live-preview>.help-text{margin:14px 3px 0}.preview-product .photo img{object-fit:cover}
+.cart-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start;margin-top:24px}.cart-items{display:grid;gap:13px}.cart-item{display:grid;grid-template-columns:126px minmax(0,1fr) auto;gap:17px;align-items:center;padding:13px;border-radius:17px;min-width:0;transition:transform .2s,border-color .2s}.cart-item:hover{transform:translateY(-2px);border-color:rgba(102,170,255,.35)}.cart-item-image{width:126px;height:112px;border-radius:11px;overflow:hidden;display:grid;place-items:center;background:rgba(4,14,28,.8);border:1px solid var(--line)}.cart-item-image img{width:100%;height:100%;object-fit:cover}.cart-item-info{min-width:0}.cart-item-info h3{font:600 18px 'League Spartan';margin:0 0 5px}.cart-item-info p{font-size:12px;color:var(--muted);margin:0 0 8px;max-width:500px}.cart-unit-price{color:var(--green);font-weight:700}.cart-unit-price small{color:var(--muted);font-size:10px;font-weight:500}.cart-item-actions{display:grid;grid-template-columns:auto auto;gap:9px 12px;align-items:center;justify-items:end}.quantity-stepper{display:flex;align-items:center;gap:10px;padding:4px;border:1px solid var(--line);border-radius:30px;background:rgba(3,13,26,.55)}.quantity-stepper form{margin:0}.quantity-stepper button{width:28px;height:28px;border:0;border-radius:50%;background:rgba(102,170,255,.15);color:#dce8f8;font-size:19px;line-height:1;cursor:pointer}.quantity-stepper button:hover:not(:disabled){background:rgba(57,245,154,.2);color:var(--green)}.quantity-stepper button:disabled{opacity:.25;cursor:not-allowed}.quantity-stepper strong{min-width:15px;text-align:center;font-size:13px}.cart-line-total{color:var(--green);font:700 16px 'League Spartan'}.remove-cart-form{grid-column:2;justify-self:end}.remove-cart{width:27px;height:27px;border-radius:50%;border:1px solid rgba(255,94,188,.35);background:rgba(255,94,188,.1);color:var(--pink);font-size:20px;line-height:1;cursor:pointer}.remove-cart:hover{background:rgba(255,94,188,.22);transform:rotate(90deg)}.cart-summary{position:sticky;top:100px;padding:22px;border-radius:17px}.cart-summary h2{font:600 23px 'League Spartan';margin:3px 0 18px}.summary-line,.summary-total{display:flex;justify-content:space-between;align-items:center;padding:12px 0;color:var(--muted);border-bottom:1px solid var(--line)}.summary-total{margin-bottom:17px;color:var(--ink);font-weight:700}.summary-total strong{font:700 24px 'League Spartan';color:var(--green)}.checkout-button{width:100%}.continue-shopping{display:block;text-align:center;margin:14px 0 0;color:#b8cce6;font-size:12px;text-decoration:none}.continue-shopping:hover{color:var(--green)}
+@media(max-width:900px){.product-create-layout{grid-template-columns:1fr}.product-live-preview{position:static}.preview-product{max-width:360px}.cart-layout{grid-template-columns:1fr}.cart-summary{position:static}}
+@media(max-width:620px){.staff-tabs{gap:6px;padding:7px}.staff-tab{grid-template-columns:1fr;grid-template-rows:auto auto auto;justify-items:center;text-align:center;gap:4px;padding:10px 5px;min-height:88px;font-size:11px}.staff-tab .tab-icon{grid-row:auto;width:28px;height:28px;font-size:16px}.staff-tab small{font-size:9px}.cart-item{grid-template-columns:82px minmax(0,1fr);gap:11px}.cart-item-image{width:82px;height:88px;grid-row:1/3}.cart-item-info h3{font-size:15px}.cart-item-info p{font-size:11px}.cart-item-actions{grid-column:2;display:flex;justify-content:space-between;justify-items:initial}.cart-line-total{margin-left:auto}.remove-cart-form{grid-column:auto}.inventory-media{min-width:190px}.inventory-media img,.inventory-media video,.media-missing{width:88px;height:66px;flex-basis:88px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+#preview-image[hidden],#preview-video[hidden]{display:none!important}
+
+/* Inline inventory editing, product search and unified order updates */
+.shop-search,.inventory-search{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 16px;border:1px solid var(--line);border-radius:14px;margin:0 0 20px;background:rgba(10,27,50,.62)}
+.shop-search{margin-top:-4px;margin-bottom:24px}.shop-search label,.inventory-search label{color:var(--muted);font-size:12px;font-weight:700}.shop-search .search-controls{display:flex;gap:8px;flex:1;min-width:min(100%,280px)}.shop-search input,.inventory-search input,.inventory-search select{flex:1;min-width:180px}.inventory-search input[type=hidden]{display:none}.inventory-search .button,.shop-search .button{white-space:nowrap}.order-update-form{display:grid;gap:8px;min-width:210px}.order-update-form label{display:grid;gap:4px;font-size:10px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}.order-update-form select,.order-update-form input{width:100%;min-width:170px;padding:7px 9px;font-size:12px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:600px){.shop-search .search-controls{min-width:100%;flex-wrap:wrap}.shop-search .search-controls input{min-width:100%}.inventory-search{align-items:stretch}.inventory-search input,.inventory-search select{min-width:100%}}
+
+/* Signup feedback: keep duplicate usernames inline instead of navigating to an error page. */
+.auth-panel{max-width:560px;margin:30px auto;padding:clamp(20px,4vw,34px);border-radius:20px}.auth-panel .muted{color:var(--muted);font-size:13px}.auth-panel .field-error{display:block;color:#ff9bd4;font-size:12px;margin-top:-5px}.auth-panel .message{margin:14px 0 18px}.auth-panel .formbox{max-width:none;padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none}.auth-panel .formbox label{display:block;color:#dce8f8;font-size:13px;font-weight:600;margin:10px 0 5px}.auth-panel .formbox input{width:100%}.auth-panel .formbox button{margin-top:12px}
+
+
+/* PK Crackers responsive navigation */
+.brand{white-space:nowrap}
+.mobile-nav-toggle{display:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;width:42px;height:42px;border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.05);color:var(--ink);cursor:pointer}
+.mobile-nav-toggle span{display:block;width:18px;height:2px;border-radius:3px;background:var(--ink)}
+@media(max-width:760px){
+ .top{display:grid;grid-template-columns:minmax(0,1fr) 44px;gap:8px;padding:11px 15px}
+ .brand{font-size:18px;min-width:0}
+ .mobile-nav-toggle{display:flex;grid-column:2;grid-row:1}
+ .top nav{display:none;grid-column:1/-1;grid-row:2;width:100%;align-items:stretch;gap:5px;padding:8px 0}
+ .top nav.nav-open{display:flex;flex-direction:column}
+ .top nav>a,.top nav .linkbtn{display:flex;align-items:center;min-height:42px;padding:9px 12px;border-radius:9px;font-size:14px}
+ .top nav .inline{display:block;width:100%}.top nav .inline button{width:100%;text-align:left}
+ main{margin-top:22px;padding:0 14px}
+ .heading{align-items:flex-start;gap:10px}
+ .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:14px}
+ .product{height:auto;min-height:0}
+ .product .pad form{flex-wrap:wrap}.product .pad form .button{flex:1}
+ .tablebox{max-width:100%;overflow-x:auto}.tablebox table{min-width:700px}
+}
+@media(max-width:420px){
+ .brand{font-size:16px;letter-spacing:-.4px}
+ .hero{min-height:300px;padding:25px 19px}.hero h1{font-size:42px;letter-spacing:-2px}
+ .auth-panel{margin:16px auto;padding:20px 15px}.formbox{padding:16px}
+ .shop-search .search-controls{display:grid;grid-template-columns:1fr 1fr}
+ .shop-search .search-controls input{grid-column:1/-1}
+}
+/* Align Django's ClearableFileInput checkbox and label as one row. */
+.product-formbox p:has(input[type="checkbox"]){display:flex;align-items:center;flex-wrap:wrap;gap:8px;line-height:1.5}
+.product-formbox input[type="checkbox"]{display:inline-block!important;flex:0 0 16px;width:16px!important;height:16px;margin:0;vertical-align:middle}
+.product-formbox label[for$="-clear_id"]{display:inline!important;margin:0;vertical-align:middle;font-size:12px;color:#dce8f8}
+.product-formbox input[type="file"]{display:block;margin-top:8px;max-width:100%;font-size:12px}
+/* Password reveal controls */
+.auth-form{display:grid;gap:8px}.auth-form>label{margin:8px 0 0!important}
+.password-field{position:relative;display:flex;align-items:center;width:100%}
+.password-field input{width:100%;padding-right:60px!important}
+.password-toggle{position:absolute;right:7px;top:50%;transform:translateY(-50%);padding:7px 9px;border:0;border-radius:8px;background:rgba(255,255,255,.06);color:#b9cce4;font-size:11px;cursor:pointer}
+.password-toggle:hover{color:var(--green)}
+.field-error{display:block;color:#ff9bd4;font-size:12px;margin:0 0 4px}
+/* Click-to-enlarge media lightbox */
+.media-trigger{position:relative;display:block;width:100%;height:100%;padding:0;border:0;background:transparent;cursor:zoom-in;overflow:hidden}
+.media-trigger img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.media-trigger:hover img{transform:scale(1.04)}
+.media-zoom-hint{position:absolute;right:9px;bottom:9px;padding:5px 9px;border-radius:30px;background:rgba(2,10,22,.8);color:#fff;font-size:10px}
+.product-video{position:relative}
+.video-expand{position:absolute;right:7px;top:7px;padding:5px 8px;border:1px solid rgba(255,255,255,.2);border-radius:20px;background:rgba(2,10,22,.82);color:#fff;font-size:10px;cursor:pointer}
+.media-lightbox{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,5,14,.92);backdrop-filter:blur(14px)}
+.media-lightbox.is-open{display:flex}
+.lightbox-content{display:grid;place-items:center;width:100%;height:100%;max-width:1100px;max-height:88vh}
+.lightbox-content img,.lightbox-content video{max-width:100%;max-height:86vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#020914}
+.lightbox-close{position:absolute;top:16px;right:16px;width:44px;height:44px;border:1px solid rgba(255,255,255,.25);border-radius:50%;background:rgba(255,255,255,.12);color:white;font-size:28px;cursor:pointer}
+body.modal-open{overflow:hidden}
+
+
+/* Functional eye-icon password controls */
+.password-toggle.has-eye-icon{display:grid;place-items:center;width:38px;height:36px;padding:7px;right:5px;top:50%;transform:translateY(-50%);background:transparent}
+.password-toggle.has-eye-icon svg{display:block;width:20px;height:20px}
+.password-field input{padding-right:50px!important}
+
+/* Keep the mobile menu toggle above the expanded navigation */
+@media(max-width:760px){
+ .top{position:relative;z-index:20}
+ .mobile-nav-toggle{cursor:pointer;touch-action:manipulation}
+ .top nav.nav-open{display:flex!important}
+}
+.media-lightbox{z-index:9999;cursor:zoom-out}
+.lightbox-content{cursor:default}
+.lightbox-content video{width:auto;height:auto;max-width:min(100%,1100px);max-height:86vh}
+
+
+/* Mobile search controls: give each action its own full-width row. */
+@media(max-width:600px){
+ .shop-search{display:block}
+ .shop-search .search-controls{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;width:100%;min-width:0}
+ .shop-search .search-controls input{grid-column:1;width:100%;min-width:0}
+ .shop-search .search-controls .button,
+ .shop-search .search-controls a.button,
+ .inventory-search>.button,
+ .inventory-search>a.button{display:flex;align-items:center;justify-content:center;width:100%;min-width:0;grid-column:1}
+ .inventory-search{display:grid;grid-template-columns:minmax(0,1fr);gap:9px;width:100%}
+ .inventory-search input[type=search],.inventory-search select{width:100%;min-width:0}
+}
+
+/* Center the eye precisely inside the password field on desktop and mobile. */
+.password-field{position:relative;display:block;width:100%;min-height:46px}
+.password-field input{display:block;width:100%;height:46px;min-height:46px;padding:10px 52px 10px 12px!important;line-height:24px}
+.password-toggle.has-eye-icon{position:absolute;z-index:2;right:8px;top:50%;width:34px;height:34px;min-width:34px;margin:0;padding:7px;transform:translateY(-50%);display:flex;align-items:center;justify-content:center;border:0;background:transparent;line-height:1}
+.password-toggle.has-eye-icon svg{width:20px;height:20px;flex:0 0 20px;display:block}
+
+/* Django ClearableFileInput: align the clear checkbox and its label together. */
+.product-formbox p:has(input[type="checkbox"]){display:grid!important;grid-template-columns:18px minmax(0,1fr);align-items:center;column-gap:8px;row-gap:6px}
+.product-formbox p:has(input[type="checkbox"]) input[type="checkbox"]{grid-column:1;grid-row:1;width:16px!important;height:16px!important;min-width:16px;margin:0!important;justify-self:center;align-self:center}
+.product-formbox p:has(input[type="checkbox"]) label[for$="-clear_id"]{grid-column:2;grid-row:1;display:block!important;margin:0!important;line-height:1.35;text-align:left}
+.product-formbox p:has(input[type="checkbox"]) input[type="file"]{grid-column:1/-1;grid-row:3;width:100%;margin:4px 0 0!important}
+.product-formbox p:has(input[type="checkbox"]) br{display:none}
+.product-formbox p:has(input[type="checkbox"]) a{grid-column:1/-1;overflow-wrap:anywhere}
+
+
+/* Final password eye alignment: cancel the generic auth button top margin. */
+.auth-form .password-field{position:relative!important;display:block!important;width:100%;height:48px;min-height:48px;margin:0!important}
+.auth-form .password-field input{box-sizing:border-box;width:100%!important;height:48px!important;min-height:48px!important;padding:10px 54px 10px 13px!important;line-height:26px!important}
+.auth-panel .auth-form .password-field .password-toggle,
+.auth-form .password-field .password-toggle.has-eye-icon{position:absolute!important;top:50%!important;right:9px!important;left:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;width:36px!important;height:36px!important;min-width:36px!important;max-width:36px!important;margin:0!important;padding:7px!important;transform:translateY(-50%)!important;border:0!important;border-radius:8px!important;background:transparent!important;line-height:1!important;box-shadow:none!important}
+.auth-form .password-field .password-toggle svg{display:block!important;width:20px!important;height:20px!important;flex:0 0 20px!important;margin:0!important}
+.auth-form .password-field .password-toggle:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+
+
+/* WhatsApp transactional-message consent at checkout */
+.whatsapp-opt-in { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0 18px; line-height: 1.5; }
+.formbox .whatsapp-opt-in-checkbox { flex: 0 0 auto; width: 18px; height: 18px; margin: 2px 0 0; accent-color: #22c55e; }
+.whatsapp-opt-in label { margin: 0; font-size: .92rem; }
+.checkout-form p:has(.whatsapp-opt-in-checkbox){display:flex;align-items:flex-start;gap:10px}
+.checkout-form p:has(.whatsapp-opt-in-checkbox) label{order:2;display:block;margin:0;line-height:1.5}
+.checkout-form p:has(.whatsapp-opt-in-checkbox) .whatsapp-opt-in-checkbox{order:1;flex:0 0 18px;margin:3px 0 0}
+
+
+/* PK Crackers identity, supplied logos, centred faith symbols and contact footer */
+.top{position:sticky;display:grid;grid-template-columns:auto 1fr auto;align-items:center}
+.brand{display:flex;align-items:center;gap:10px;min-width:max-content}
+.brand-logo{display:block;width:48px;height:48px;object-fit:cover;border-radius:50%;background:#fff;border:1px solid rgba(255,255,255,.3)}
+.brand b{color:var(--green)}
+.faith-symbols{justify-self:center;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.faith-symbols img{display:block;width:56px;height:56px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 3px 9px rgba(255,190,75,.22))}
+.hero-brand-logo{position:relative;z-index:2;display:block;width:230px;height:230px;object-fit:contain;border-radius:50%;filter:drop-shadow(0 14px 35px rgba(0,0,0,.35))}
+.site-footer{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;max-width:1240px;margin:0 auto;padding:24px max(5vw,20px);border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:54px;height:54px;border-radius:50%;background:#fff}.footer-brand strong{display:block;color:var(--ink);font-size:15px}.footer-brand small{display:block}.footer-contact{display:grid;gap:4px;text-align:right}.footer-contact strong{color:var(--ink);margin-bottom:3px}.footer-contact a{color:#b8d5ff;text-decoration:none}.footer-contact a:hover{color:var(--green)}.footer-note{grid-column:1/-1;margin:0;padding-top:8px;border-top:1px solid var(--line)}
+@media(max-width:760px){.top{grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:auto auto auto}.brand{grid-column:1;grid-row:1}.mobile-nav-toggle{grid-column:2;grid-row:1}.faith-symbols{grid-column:1/-1;grid-row:2;justify-self:center;padding:5px 0 8px;gap:9px}.faith-symbols img{width:48px;height:48px}.top nav{grid-column:1/-1;grid-row:3}.hero-brand-logo{width:170px;height:170px}.site-footer{grid-template-columns:1fr;gap:14px;padding:22px 16px}.footer-contact{text-align:left}.footer-note{grid-column:1}}
+@media(max-width:420px){.brand-logo{width:42px;height:42px}.faith-symbols{gap:8px}.faith-symbols img{width:44px;height:44px}.hero-brand-logo{width:145px;height:145px}}
+
+/* Requested additions: legal ticker, post-login notice and product category controls. */
+.legal-marquee{overflow:hidden;white-space:nowrap;border-bottom:1px solid var(--line);background:rgba(255,157,67,.09);color:#ffd9ad;font-size:11px;font-weight:700;letter-spacing:.035em}
+.legal-marquee-track{display:flex;width:max-content;animation:legal-marquee-scroll 58s linear infinite}
+.legal-marquee-track span{padding:8px 42px}
+@keyframes legal-marquee-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.legal-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.76);backdrop-filter:blur(8px)}
+.legal-modal.is-open{display:flex}
+.legal-modal-card{position:relative;width:min(100%,650px);max-height:min(88vh,760px);overflow:auto;padding:clamp(24px,5vw,42px);border-radius:20px}
+.legal-modal-card h2{font:700 clamp(28px,5vw,38px)/1.05 'League Spartan',serif;margin:8px 35px 18px 0}
+.legal-modal-card p:not(.eyebrow){color:#d3deed;font-size:14px;line-height:1.75}
+.legal-modal-card .legal-source{font-size:12px;color:var(--muted)}
+.legal-modal-close{position:absolute;right:18px;top:12px;border:0;background:transparent;color:var(--ink);font-size:30px;cursor:pointer}
+.legal-acknowledge{margin-top:8px}
+.shop-search .search-controls select{min-width:190px}
+@media(prefers-reduced-motion:reduce){.legal-marquee-track{animation:none}}
+
+/* Stronger typography requested for PK CRACKERS. */
+.brand{font-family:'League Spartan',sans-serif;font-weight:900;letter-spacing:-.45px}
+.hero h1,.heading h2,h1,.pad h3,.payment-panel h2,.cart-summary h2{font-family:'League Spartan',sans-serif;font-weight:800;letter-spacing:-.035em}
+.hero h1{line-height:.98}
+.button{font-family:'Inter',sans-serif;font-weight:800}
+.shop-hero{position:relative;isolation:isolate;min-height:440px;align-items:flex-end;background:#061225;border-color:rgba(255,190,95,.25)}
+.shop-hero:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,13,29,.92) 0%,rgba(4,13,29,.66) 43%,rgba(4,13,29,.08) 100%),linear-gradient(0deg,rgba(4,13,29,.68),transparent 58%)}
+.shop-hero-art{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.shop-hero .hero-copy{max-width:760px;padding:16px 0 4px}
+.shop-hero .hero h1{font-size:clamp(38px,6.3vw,72px);max-width:760px}
+.shop-hero .hero h1 span{white-space:nowrap;background:linear-gradient(90deg,#ffe2a2,#ffb64c 52%,#fff0c8);background-clip:text;color:transparent}
+.shop-hero .hero-copy>p:not(.eyebrow){max-width:540px}
+@media(max-width:600px){.shop-hero{min-height:390px;padding:24px 20px}.shop-hero-art{object-position:center top}.shop-hero:before{background:linear-gradient(0deg,rgba(4,13,29,.94) 0%,rgba(4,13,29,.66) 58%,rgba(4,13,29,.12) 100%)}.shop-hero .hero-copy{padding-top:170px}.shop-hero .hero h1{font-size:clamp(34px,10vw,48px);letter-spacing:-.04em}}
+

@@ -1,0 +1,19 @@
+PK CRACKERS | ORDER UPDATE
+
+Hello {{ order.username }}, there has been an update to order #{{ order.pk }}.
+
+CHANGES
+{% for change in changes %}{{ change.label }} | Previous: {{ change.old_value }} | Current: {{ change.new_value }}
+{% endfor %}
+CURRENT ORDER STATUS: {{ order.get_status_display }}
+CURRENT PAYMENT STATUS: {{ order.get_payment_status_display }}
+
+ITEMS
+{% for item in items %}{{ item.product_name }} | Qty: {{ item.quantity }} | ₹{{ item.line_total|floatformat:2 }}
+{% endfor %}
+ORDER TOTAL: ₹{{ order.total_amount|floatformat:2 }}
+
+View order details: {{ order_url }}
+
+PK CRACKERS{% if support_email %}
+{{ support_email }}{% endif %}
